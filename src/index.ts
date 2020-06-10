@@ -1,24 +1,34 @@
-console.log('Try npm run check/fix!');
+import {AxiosResponse} from 'axios';
 
-const longString =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut aliquet diam.';
-
-const trailing = 'Semicolon';
-
-const why = 'am I tabbed?';
-
-export function doSomeStuff(
-  withThis: string,
-  andThat: string,
-  andThose: string[]
-) {
-  //function on one line
-  if (!andThose.length) {
-    return false;
+function format(r: AxiosResponse): string {
+  return `HTTP ${r.status} ${r.statusText}${
+    r.data.message ? ` - ${r.data.message}` : ''
   }
-  console.log(withThis);
-  console.log(andThat);
-  console.dir(andThose);
-  return;
+  Response:
+  ${JSON.stringify(
+    {
+      data: r.data,
+      status: r.status,
+      statusText: r.statusText,
+      headers: r.headers,
+    },
+    null,
+    2
+  )}
+  Request:
+  ${JSON.stringify(
+    {
+      method: r.config.method,
+      baseURL: r.config.baseURL,
+      url: r.config.url,
+      params: r.config.params,
+      data: r.config.data,
+      headers: r.config.headers,
+    },
+    null,
+    2
+  )}
+  `;
 }
-// TODO: more examples
+
+export default format;
