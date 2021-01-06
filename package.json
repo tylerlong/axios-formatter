@@ -12,12 +12,12 @@
   },
   "devDependencies": {
     "@types/node": "^14.0.13",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "gts": "^2.0.2",
     "typescript": "^3.9.5",
     "yarn-upgrade-all": "^0.5.2"
   },
   "peerDependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.21.1"
   }
 }
